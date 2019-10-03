@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class Sistema {
     private ArrayList <Usuario> usuarios;
-
     public Sistema() {
     }
 
@@ -24,5 +23,9 @@ public class Sistema {
     public void setUsuarios(ArrayList<Usuario> val) {
         this.usuarios = val;
     }
+    
+   public void addUser(Usuario u){
+       usuarios.add(u);
+   }
     
 }

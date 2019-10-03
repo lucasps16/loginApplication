@@ -5,6 +5,10 @@
  */
 package Frontera;
 
+import Control.CrearRegistro;
+import Control.ValidarLogin;
+import Entidad.Usuario;
+
 /**
  *
  * @author lupena
@@ -33,6 +37,7 @@ public class Registro extends javax.swing.JPanel {
         nombreTF = new javax.swing.JTextField();
         contrasenaTF = new javax.swing.JTextField();
         valContrasena = new javax.swing.JTextField();
+        registrar = new javax.swing.JButton();
 
         jLabel1.setText("Nombre");
 
@@ -46,21 +51,31 @@ public class Registro extends javax.swing.JPanel {
             }
         });
 
+        registrar.setText("Registrar");
+        registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nombreTF)
-                    .addComponent(contrasenaTF)
-                    .addComponent(valContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(registrar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nombreTF)
+                            .addComponent(contrasenaTF)
+                            .addComponent(valContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -78,13 +93,29 @@ public class Registro extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(valContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(registrar)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void nombreTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreTFActionPerformed
+
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+      Usuario usuario = new Usuario();
+      String nombre = nombreTF.getText();
+      String password = contrasenaTF.getText();
+      String valPass = valContrasena.getText();
+      usuario.setNombre(nombreTF.getText());
+      usuario.setPassword(contrasenaTF.getText());
+      
+        CrearRegistro registro = new CrearRegistro();
+        System.out.println("-----------");
+        String resultadoReg = registro.verificarRegistro(nombre,password,valPass);
+        System.out.println(resultadoReg);
+    }//GEN-LAST:event_registrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -93,6 +124,7 @@ public class Registro extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField nombreTF;
+    private javax.swing.JButton registrar;
     private javax.swing.JTextField valContrasena;
     // End of variables declaration//GEN-END:variables
 }
