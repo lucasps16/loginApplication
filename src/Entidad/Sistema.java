@@ -21,8 +21,8 @@ public class Sistema {
         return usuarios;
     }
 
-    public void setUsuarios(ArrayList<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuarios(ArrayList<Usuario> val) {
+        this.usuarios = val;
     }
     
 }
