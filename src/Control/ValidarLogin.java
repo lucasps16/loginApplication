@@ -31,9 +31,9 @@ public class ValidarLogin {
                     u.getPassword().equals(u.getPassword())){
                 return("Bienvenido");
             }
-            return ("Datos incorrectos");
+            
         }
-        return null;
+       return ("Datos incorrectos"); 
     }
     
     public Boolean verificarLongitudNombre(String nombre){
