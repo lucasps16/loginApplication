@@ -5,14 +5,24 @@
  */
 package Entidad;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
+
 /**
  *
  * @author lupena
  */
-public class Usuario {
+@Entity
+@Table(name="usuarios")
+public class Usuario implements Serializable {
     
     private String nombre;
     private String password;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     public Usuario() {
     }

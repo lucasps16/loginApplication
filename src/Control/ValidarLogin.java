@@ -8,14 +8,16 @@ package Control;
 import Entidad.Sistema;
 import Entidad.Usuario;
 import Frontera.FramePrincipal;
-
+import DAO.UsuarioDAO;
+import Entidad.Usuario;
 /**
  *
  * @author lupena
  */
 public class ValidarLogin {
-    private Sistema sistema = FramePrincipal.sistema;
-    
+  
+    private UsuarioDAO dao = new UsuarioDAO();
+//    private Sistema sistema = FramePrincipal.sistema;
     public ValidarLogin() {
     }
     
@@ -26,12 +28,15 @@ public class ValidarLogin {
         if(!verificarLongitudPassword(usuario.getPassword())){
             return("Longitud contraseña incorrecta");
         }
-        for (Usuario u : sistema.getUsuarios()) {
-            if(u.getNombre().equals(usuario.getNombre()) && 
-                    u.getPassword().equals(usuario.getPassword())){
-                return("Bienvenido");
-            }
-            
+//        for (Usuario u : sistema.getUsuarios()) {
+//            if(u.getNombre().equals(usuario.getNombre()) && 
+//                    u.getPassword().equals(usuario.getPassword())){
+//                return("Bienvenido");
+//            }
+//            
+//        }
+        if(dao.leer(usuario)!=null){
+            return ("Bienvenido");
         }
        return ("Datos incorrectos"); 
     }
